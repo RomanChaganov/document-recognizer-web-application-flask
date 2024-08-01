@@ -106,15 +106,24 @@ function getImageWithoutTables() {
   recognizedText.innerHTML = '';
   
   let withoutTableImg = document.createElement('img');
+
   withoutTableImg.classList.add('expnd');
   withoutTableImg.addEventListener('click', function() {
     this.classList.toggle('expanded');
   });
   
   let filename = 'bin/image_without_tables.jpg';
-  withoutTableImg.src = filename;
+  const now = new Date();
+
+  // Извлекаем часы, минуты и секунды
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  withoutTableImg.src = filename+"?v="+hours+minutes+seconds;
   withoutTableImg.alt = 'Image without tables';
-  
+
+  recognizedText.innerHTML = '';
   recognizedText.appendChild(withoutTableImg);
 }
 
@@ -147,7 +156,15 @@ function displayTables(size) {
     tableImg.addEventListener('click', function() {
       this.classList.toggle('expanded');
     });
-    tableImg.src = filename;
+
+    const now = new Date();
+
+    // Извлекаем часы, минуты и секунды
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    tableImg.src = filename+"?v="+hours+minutes+seconds;
     tableImg.alt = 'Table ' + i;
     
     tablesContainer.appendChild(tableImg);
