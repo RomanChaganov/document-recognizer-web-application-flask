@@ -53,6 +53,7 @@ def rotate_img(image):
     center = tuple(np.array(image.shape[1::-1]) / 2)
     rotation_matrix = cv2.getRotationMatrix2D(center, angle, scale=1.0)
     rotated_image = cv2.warpAffine(image, rotation_matrix, image.shape[1::-1], flags=cv2.INTER_LINEAR, borderValue=(255,255,255))
+    # cv2.imwrite('rotated_image.jpg', rotated_image)
     return rotated_image
 #     show_result(rotated_image)
 #

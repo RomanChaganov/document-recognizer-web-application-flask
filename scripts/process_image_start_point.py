@@ -58,6 +58,13 @@ def process_image(image):
     The last two parameters to the adaptiveThreshold function are the size of the neighboring area and
     the constant C which is subtracted from the mean or weighted mean calculated.
     """
+    # filtered = cv.inRange(image, (0, 0, 0), (150, 150, 150))
+    # 
+    # filtered = cv.bitwise_not(filtered)
+    #
+    # img_rgb = cv2.cvtColor(img_binary, cv2.COLOR_GRAY2RGB)
+    #
+    # cv.imwrite("Original.png", filtered)
     MAX_THRESHOLD_VALUE = 255
     BLOCK_SIZE = 15
     THRESHOLD_CONSTANT = 0
@@ -169,10 +176,11 @@ def process_image(image):
         image = cv.rectangle(image, (table.x, table.y), (table.x + table.w, table.y + table.h), (255, 255, 255), -1)
 
         n += 1
-    cv.imwrite('bin/image_without_tables.jpg', image)
-    pairs = extract_text(image)
 
     for i in range(n):
         generate_tables(f"{out4rotated}/{table_name}{i}.jpg", i)
-        
-    return pairs
+
+    cv.imwrite('bin/image_without_tables.jpg', image)
+    # pairs = extract_text(image)
+
+    return image

@@ -2,7 +2,7 @@ from difflib import get_close_matches
 from scripts.kie_config import key_words
 
 
-def get_pair(data_string : str):
+def get_pair(data_string: str):
     data_string_split = data_string.split()
     value = data_string.split()
     not_key_words_in_a_row = 0

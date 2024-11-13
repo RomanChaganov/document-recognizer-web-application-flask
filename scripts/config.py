@@ -1,1 +1,1 @@
-TESSDATA_PATH = r'D:\Program\Tesseract-OCR\tessdata'
+TESSDATA_PATH = r'C:\Program Files\Tesseract-OCR\tessdata'
