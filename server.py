@@ -9,7 +9,7 @@ from scripts.extract_key_value_pairs_re import extract_key_value_pairs
 import sys
 import shutil
 import os
-from scripts.modelClasses import *
+from scripts.modelClasses import BertCrf, ReBertCrf
 
 
 sys.path.insert(0, 'scripts')

@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c64ad59e-2dfe-487d-b273-1ea48bca0039" name="Changes" comment="fix" />
+    <list default="true" id="c64ad59e-2dfe-487d-b273-1ea48bca0039" name="Changes" comment="pipeline">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cell-extractor-with-tesseract.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cell-extractor-with-tesseract.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rotated_tables/table0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/bin/rotated_tables/table0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rotated_tables/table1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/tables/table0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/bin/tables/table0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/tables/table1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/label2id.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/label2id.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/extract_key_value_pairs_re.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/extract_key_value_pairs_re.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,37 +75,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.DELETE.executor": "Run",
-    "Python.cellextractor.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.process_image_start_point.executor": "Run",
-    "Python.server.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "new__version",
-    "last_opened_file_path": "E:/PycharmProjects/cell-extractor-with-tesseract/scripts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.DELETE.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cellextractor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.extract_key_value_pairs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pipeline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.process_image_start_point.executor&quot;: &quot;Run&quot;,
+    &quot;Python.server.executor&quot;: &quot;Profiler&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new__version&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/PycharmProjects/cell-extractor-with-tesseract&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\scripts" />
       <recent name="E:\PycharmProjects\cell-extractor-with-tesseract" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\weights" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\data" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\utils" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PycharmProjects\cell-extractor-with-tesseract" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\weights" />
+      <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\scripts\scripts_for_re" />
       <recent name="E:\PycharmProjects\cell-extractor-with-tesseract\scripts" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.process_image_start_point">
+    <configuration name="extract_key_value_pairs_re" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="cell-extractor-with-tesseract" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\PycharmProjects\cell-extractor-with-tesseract\scripts\extract_key_value_pairs_re.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="process_image_start_point" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="cell-extractor-with-tesseract" />
       <option name="ENV_FILES" value="" />
@@ -116,6 +160,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="cell-extractor-with-tesseract" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (cell-extractor-with-tesseract)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.process_image_start_point" />
+      <item itemvalue="Python.extract_key_value_pairs_re" />
+      <item itemvalue="Python.server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.extract_key_value_pairs_re" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -150,7 +229,38 @@
       <workItem from="1716139267467" duration="6000" />
       <workItem from="1716141927955" duration="4156000" />
       <workItem from="1716195891652" duration="1796000" />
-      <workItem from="1717055007695" duration="19772000" />
+      <workItem from="1717055007695" duration="20166000" />
+      <workItem from="1718270712507" duration="110000" />
+      <workItem from="1720005803805" duration="1849000" />
+      <workItem from="1720532582840" duration="28000" />
+      <workItem from="1722072400091" duration="11682000" />
+      <workItem from="1722173702348" duration="683000" />
+      <workItem from="1722420354508" duration="266000" />
+      <workItem from="1722513081830" duration="1479000" />
+      <workItem from="1722514590033" duration="10092000" />
+      <workItem from="1722600333919" duration="849000" />
+      <workItem from="1723371574071" duration="726000" />
+      <workItem from="1723380200223" duration="352000" />
+      <workItem from="1723733524067" duration="20000" />
+      <workItem from="1726656246544" duration="1703000" />
+      <workItem from="1730724928579" duration="10000" />
+      <workItem from="1731246787205" duration="7538000" />
+      <workItem from="1731257223902" duration="21000" />
+      <workItem from="1731408548543" duration="1308000" />
+      <workItem from="1731410431559" duration="325000" />
+      <workItem from="1731489047373" duration="1884000" />
+      <workItem from="1731669733139" duration="631000" />
+      <workItem from="1731672551502" duration="2116000" />
+      <workItem from="1731674691872" duration="397000" />
+      <workItem from="1731675099097" duration="8000000" />
+      <workItem from="1731837337455" duration="46000" />
+      <workItem from="1731837719172" duration="213000" />
+      <workItem from="1732017154946" duration="8383000" />
+      <workItem from="1732094901566" duration="163000" />
+      <workItem from="1732354690350" duration="600000" />
+      <workItem from="1732359395276" duration="3356000" />
+      <workItem from="1732521536249" duration="8082000" />
+      <workItem from="1732625278896" duration="1471000" />
     </task>
     <task id="LOCAL-00001" summary="Added parse to Excel Table">
       <option name="closed" value="true" />
@@ -224,7 +334,39 @@
       <option name="project" value="LOCAL" />
       <updated>1717091359248</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix">
+      <option name="closed" value="true" />
+      <created>1717091618326</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1717091618326</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix for new png's">
+      <option name="closed" value="true" />
+      <created>1722522401946</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722522401946</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added models ner and re">
+      <option name="closed" value="true" />
+      <created>1731489182222</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1731489182222</updated>
+    </task>
+    <task id="LOCAL-00013" summary="pipeline">
+      <option name="closed" value="true" />
+      <created>1731489216593</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1731489216593</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +391,10 @@
     <MESSAGE value="Git ignore" />
     <MESSAGE value="Добавление ссылки вместо скачки" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="fix for new png's" />
+    <MESSAGE value="added models ner and re" />
+    <MESSAGE value="pipeline" />
+    <option name="LAST_COMMIT_MESSAGE" value="pipeline" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -257,16 +402,16 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/static/javascript/script.js</url>
           <line>84</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$process_image_start_point.coverage" NAME="process_image_start_point Coverage Results" MODIFIED="1714640897184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$process_image_start_point.coverage" NAME="process_image_start_point Coverage Results" MODIFIED="1720006273585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$cellextractor.coverage" NAME="cellextractor Coverage Results" MODIFIED="1712506919621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$server.coverage" NAME="server Coverage Results" MODIFIED="1717072849619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$server.coverage" NAME="server Coverage Results" MODIFIED="1731675577078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$extract_key_value_pairs.coverage" NAME="extract_key_value_pairs Coverage Results" MODIFIED="1722515877128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scripts" />
     <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$DELETE.coverage" NAME="DELETE Coverage Results" MODIFIED="1713032141235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cell_extractor_with_tesseract$main.coverage" NAME="main Coverage Results" MODIFIED="1713518709176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

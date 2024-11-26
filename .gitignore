@@ -1,8 +1,11 @@
-.venv
+.venv2
 .idea
-/bin
+bin
 cells*
 excel
 *.zip
 *.whl
 *.xlsx
+*.pt
+pipeline.py
+text.txt

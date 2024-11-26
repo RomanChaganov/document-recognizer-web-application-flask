@@ -5,7 +5,7 @@ from tqdm import tqdm
 
 import numpy as np
 from collections import defaultdict
-
+from collections import OrderedDict
 from transformers import AutoTokenizer
 from nltk.tokenize import WordPunctTokenizer
 
@@ -35,8 +35,7 @@ HIDDEN_SIZE = 768
 BERT_NAME = "ai-forever/ruBert-base"
 BERT_CRF_PATH = "weights/bert-crf.pt"
 RE_BERT = "weights/re.pt"
-LABEL2ID = "resources/data/train/label2id.json"
-RETAG2ID = "resources/data/train/retag2id.json"
+LABEL2ID = "data/label2id.json"
 
 entities_positions = None
 tags_pos = None
@@ -44,8 +43,10 @@ tags_pos = None
 
 def tokenize(text, tokenizer, nltk_tokenizer=WordPunctTokenizer(), max_length=512):
     tokenized_text_spans = list(nltk_tokenizer.span_tokenize(text))
-    words = [text[span[0] : span[1]] for span in tokenized_text_spans]
+    # words = [text[span[0] : span[1]] for span in tokenized_text_spans]\
+    words = ['Типовая', 'межотраслевая', 'форма', '№', '1-Т', 'Утверждена', 'постановлением', 'Госкомстата', 'России', 'от', '28.11.97', '№78', 'Форма', 'по', 'ОКУД', 'ТОВАРНО-ТРАНСПОРТНАЯ', 'НАКЛАДНАЯ', '№', 'серия', 'Дата', 'составления', 'Грузоотправитель', 'Обособленное', 'подразделение', 'ООО', '"Комус"', '454008,', 'Челябинская', 'o6n.,', 'г.Челябинск,', 'ул.Автодорожная,', '19-a,', 'тел.', '8-800-200-33-83', 'факс', '8-800-200-33-83', 'по', 'ОКПО', 'рр', 'рр', 'Наименование', 'оранизации', 'адрес', 'номертелефна', 'мм', 'Грузополучатель', '000', '"УЦСБ"', '620100,', 'Свердловская', 'o6n.,', 'г.Екатеринбург,', 'ул.Ткачей,', '6,', 'тел', '3433799834', 'по', 'ОКПО', 'полное', 'наименование', 'организации,', 'адрес,', 'номер', 'телефона', 'Плательщик', '000', '"УЦСБ"', 'ИНН', '6672235068', '620100,', 'СВЕРДЛОВСКАЯ', 'ОБЛАСТЬ,', 'Г.', 'ЕКАТЕРИНБУРГ,', 'УЛ.', 'ТКАЧЕЙ,', 'Д.6', 'тел', '3433799834*1100', 'факс', '3433820563', 'р/с', '40702810900000068305', 'к/с', '30101810200000000823', 'Банк', 'ГПБ', '(АО)', 'БИК', '044525823', 'по', 'ОКПО', 'полное', 'наименование', 'организации,', 'адрес,', 'банковские', 'реквизиты', 'VPP', 'ыыы', 'оо—оо—', 'до', '—ж—ж—жжж»»—»—»—»__', 'Документ', 'об', 'отгрузке', 'товаров', 'и', 'счет-фактура', '№', '34888215', 'от', '26.02.2024', 'передаются', 'ЭЛЕКТРОННО', 'ТТН', '№', '0VT/49358868/TTH', 'от', '26/02/2024', 'no', 'a/c', '№', 'OVT/847765/50553808', 'от', '26.02.2024', 'Поставщик', 'ООО', '"КОМУС"', 'ИНН', '7721793895', 'Страница', '1', 'из', '3', 'Покупатель', 'ИНН', '6672235068', 'ООО', '"УЦСБ"']
     encoded = tokenizer(words, is_split_into_words=True, add_special_tokens=False, max_length=max_length, truncation=True, padding='max_length')
+    # print(tokenizer.batch_decode(encoded['input_ids']))
     input_ids = encoded["input_ids"]
     words_ids_for_tokens = encoded.word_ids()
     
@@ -99,14 +100,11 @@ def run(text):
     nltk_tokenizer = WordPunctTokenizer()
     
     input_ids, words_ids_for_tokens, words = tokenize(text, tokenizer, nltk_tokenizer)
+    print(input_ids, words_ids_for_tokens, words, sep='\n\n')
     
     with open(LABEL2ID, "r") as label2id_file:
         label2id = json.load(label2id_file)
     id2label = {id: label for label, id in label2id.items()}
-    
-    with open(RETAG2ID, "r") as retag2id_file:
-        retag2id = json.load(retag2id_file)
-    no_relation_tag = len(retag2id)
     
     entity_tags_set = set()
     for label, id in label2id.items():
@@ -136,10 +134,10 @@ def run(text):
             
         start_pos1, end_pos1 = tag1.pos
         start_pos2, end_pos2 = tag2.pos
-        
-        words1 = set(words_ids_for_tokens[start_pos1:end_pos1])
-        words2 = set(words_ids_for_tokens[start_pos2:end_pos2])
-        
+
+        words1 = list(OrderedDict.fromkeys(words_ids_for_tokens[start_pos1:end_pos1]))
+        words2 = list(OrderedDict.fromkeys(words_ids_for_tokens[start_pos2:end_pos2]))
+
         print(f"{tag1.name}: {' '.join([words[i] for i in words1])}")
         print(f"{tag2.name}: {' '.join([words[i] for i in words2])}")
         print()
@@ -148,7 +146,7 @@ def run(text):
     
     print(f'Найдено {i} связей')
     
-    print("Sexassfully!!")
+    print("Sexassfully!!" if i!=0 else "Not Sexassfully((")
 
 
 if __name__ == '__main__':

@@ -1,8 +1,6 @@
 opencv-python
-pytesseract
 Pillow
 numpy
-tesserocr
 pandas
 openpyxl
 Flask

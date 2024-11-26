@@ -1,4 +1,6 @@
 import json
+from collections import OrderedDict
+
 from transformers import AutoTokenizer
 from nltk.tokenize import WordPunctTokenizer
 from scripts.extract_text import extract_text
@@ -129,11 +131,8 @@ def extract_key_value_pairs(image, model_ner, model_re, label2id, entity_tag_to_
         start_pos1, end_pos1 = tag1.pos
         start_pos2, end_pos2 = tag2.pos
 
-        words1 = set(words_ids_for_tokens[start_pos1:end_pos1])
-        words2 = set(words_ids_for_tokens[start_pos2:end_pos2])
-
-        # print(f"{tag1.name}: {' '.join([words[i] for i in words1])}")
-        # print(f"{tag2.name}: {' '.join([words[i] for i in words2])}")
+        words1 = list(OrderedDict.fromkeys(words_ids_for_tokens[start_pos1:end_pos1]))
+        words2 = list(OrderedDict.fromkeys(words_ids_for_tokens[start_pos2:end_pos2]))
 
         key = ' '.join([words[i] for i in words1])
         value = ' '.join([words[i] for i in words2])
