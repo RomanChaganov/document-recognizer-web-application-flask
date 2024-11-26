@@ -4,14 +4,13 @@ html, body {
 }
 
 body {
-    background-color: #eee;
+    background-color: #fff;
     font: 12pt sans-serif;
+    width: 100%;
 }
 
 #wrapper {
-    width: 64em;
-    margin: 40px auto;
-    background-color: #fff;
+    width: 100%;
 }
 
 header {
@@ -39,5 +38,28 @@ header p {
 
 main {
     padding: 1em 1.5em;
-    height: 40em;
+    height: 100%;
+}
+
+table {
+  line-height: 1.5em;
+  font-size: 14pt;
+  text-align: left;
+}
+
+caption {
+  text-align: left;
+}
+
+th, td {
+    height: 1em;
+    width: 50%;
+}
+
+td {
+  vertical-align: inherit;
+}
+
+div img {
+  float: left;
 }

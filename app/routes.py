@@ -1,10 +1,11 @@
-from app import app
-from app import WORK_DIR, TESSDATA_PATH
+from app import app, WORK_DIR, TESSDATA_PATH
 from app.preprocessing import preprocess
 from app.tablepars import pars
 from app.textrecognizer import recognize
 from app.tablesrecognizer import recognize_generator
+from app.pipeline import relation_extract
 
+import base64
 import cv2
 from io import BytesIO
 
@@ -21,8 +22,6 @@ from werkzeug.utils import secure_filename
 
 from tesserocr import PyTessBaseAPI, PSM, RIL
 from tesserocr import iterate_level
-
-from zipfile import ZipFile, ZIP_DEFLATED
 
 
 @app.route('/')
@@ -55,19 +54,34 @@ def upload():
             filename = secure_filename(file.filename)
             file.save(os.path.join(temp_dir, filename))
             
-            processing(filename, temp_dir, delete_stamp == 'on')
-
-            zip_buffer = BytesIO()
-            with ZipFile(zip_buffer, 'w', ZIP_DEFLATED) as zip_file:
-                for root, dirs, files in os.walk(temp_dir):
-                    for file in files:
-                        file_path = os.path.join(root, file)
-                        zip_file.write(file_path, os.path.relpath(file_path, temp_dir))
+            binary_img, image, table_xl, data = processing(filename, temp_dir, delete_stamp == 'on')
+            binary_io, image_io = pil_to_byteio(binary_img), pil_to_byteio(image)
             
-            zip_buffer.seek(0)
-            return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='archive.zip')
+            binary_base64 = get_base64_from_byteio(binary_io)
+            image_base64 = get_base64_from_byteio(image_io)
+            table_base64 = get_base64_from_byteio(table_xl)
+           
+            #return send_file(zip_buffer, mimetype='application/zip', as_attachment=True, download_name='archive.zip')
+            
+            return render_template('answer.html', data_extracted=image_base64, data_table=table_base64, items=data)
 
     return '<h2>Not OK</h2>'
+    
+
+def pil_to_byteio(image):
+    img_buffer = BytesIO()
+    image.save(img_buffer, format='JPEG')
+    img_buffer.seek(0)
+    
+    return img_buffer
+    
+
+def get_base64_from_byteio(data):
+    byte_data = data.getvalue()
+    base64_encoded = base64.b64encode(byte_data)
+    base64_string = base64_encoded.decode('utf-8')
+    
+    return base64_string
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -77,7 +91,7 @@ def allowed_file(filename):
 
 
 def processing(filename, temp_dir, delete_stamp):
-    binary = preprocess(os.path.join(temp_dir, filename), delete_stamp)
+    binary, image = preprocess(os.path.join(temp_dir, filename), delete_stamp)
 
     imgs, struct_sizes = pars(binary)
     workbook = Workbook()
@@ -96,13 +110,23 @@ def processing(filename, temp_dir, delete_stamp):
 
             _set_cells(cells_imgs, api, sheet)
         
-    with open(os.path.join(temp_dir, 'text.txt'), 'w', encoding='UTF-8') as f:
-        f.write(str(words))
+    #with open(os.path.join(temp_dir, 'text.txt'), 'w', encoding='UTF-8') as f:
+    #    f.write(str(words))
     
-    if sheet is not None:
-        workbook.save(os.path.join(temp_dir, 'tables.xlsx'))
+    binary_img = Image.fromarray(binary)
+    image = Image.fromarray(image)
+    data = relation_extract(words, image)
     
-    cv2.imwrite(os.path.join(temp_dir, 'binary.jpg'), binary)
+    table_xl = BytesIO()
+    workbook.save(table_xl)
+    table_xl.seek(0)
+    
+    # if sheet is not None:
+        #workbook.save(os.path.join(temp_dir, 'tables.xlsx'))
+    
+    # cv2.imwrite(os.path.join(temp_dir, 'binary.jpg'), binary)
+    
+    return binary_img, image, table_xl, data
 
 
 def _set_cells(cells_imgs, api, sheet):

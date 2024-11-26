@@ -16,21 +16,21 @@ def preprocess(filename, delete_stamp):
         return image
 
     if delete_stamp:
-        image = remove_stamp(image)
+        gray = remove_stamp(image)
     else:
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    binary = binarization(image)
+    binary = binarization(gray, False)
     deskew_img = deskew(binary)
     deskew_img = _rotate_tesser(deskew_img)
 
-    return deskew_img
+    return deskew_img, image
 
 
 def remove_stamp(image):
     K = _extrack_black(image)
     K = cv2.bitwise_not(K)
-    # K = cv2.convertScaleAbs(K, alpha=2, beta=-25)
+    # K = cv2.convertScaleAbs(K, alpha=2, beta=-70)
 
     return K
 
@@ -50,9 +50,7 @@ def binarization(gray, adaptive=False):
             gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 35, 10
         )
     else:
-        thresh = 127
-        max_value = 255
-        ret, B = cv2.threshold(gray, thresh, max_value, cv2.THRESH_BINARY)
+        ret, B = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
     return B
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Извлекатор сущностей</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <div class="inner">
+                    <h1>Ответ</h1>
+                    <p><a href="/">Главная</a></p>
+                </div>
+            </header>
+            <main style="height: 100%;">
+                <!--<img width="100%" src="data:image/jpeg;base64,{{ data_bin }}" alt="Бинаризованное изображение">-->
+                <div>
+                  <img width="70%" src="data:image/jpeg;base64,{{ data_extracted }}" alt="Извлеченные сущности">
+                  <table border="1" width="30%" align="center">
+                      <caption align="left">Пары Ключ-значение</caption>
+                      <tr>
+                          <th>Ключ</th>
+                          <th>Значение</th>
+                      </tr>
+                      {% for item in items %}
+                      <tr>
+                          <td>{{ item[0] }}</td>
+                          <td>{{ item[1] }}</td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+                </div>
+                <p><a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{{ data_table }}" download="tables.xlsx">Скачать таблицы</a></p>
+            </main>
+        </div>
+    </body>
+</html>
