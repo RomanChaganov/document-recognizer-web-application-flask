@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Извлекатор сущностей</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <div class="inner">
+                    <h1>Извлечь сущности из документа</h1>
+                    <p><a href="/">Главная</a></p>
+                </div>
+            </header>
+            <main>
+                <p>Загрузите изображение и дождитесь ответа</p>
+                <form action="upload" method="post" enctype="multipart/form-data">
+                    <p>
+                        <label for="file">Выберите файл:</label>
+                        <input type="file" id="file" name="file" accept=".pdf,image/*" required>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="stamp" name="delete_stamp">
+                        <label for="delete_stamp">Удалить печать</label>
+                    </p>
+                    <p><button type="submit">Отправить</button></p>
+                </form>
+            </main>
+        </div>
+    </body>
+</html>
